@@ -1,0 +1,16 @@
+footer{
+    
+}
+
+footer ul.footer-links{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+footer ul.footer-links > li{
+    margin: 0;
+    padding: 0 5px;
+    list-style: none;
+    display: inline-block;
+}

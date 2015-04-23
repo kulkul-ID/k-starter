@@ -1,0 +1,2 @@
+<h1><?php echo $welcome_message; ?></h1>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed commodo finibus venenatis. Duis sed congue metus, vel bibendum est. Aliquam eu quam ante. Pellentesque ac massa in orci semper fringilla quis in elit. Maecenas fringilla nunc vitae augue placerat suscipit. Etiam euismod tempor sapien, vel fringilla risus efficitur vitae. Sed egestas malesuada justo, non eleifend sapien tempor posuere. Aliquam id sem ac dui elementum lobortis. Nulla tristique mollis elit, dignissim gravida arcu porttitor at. Sed sed arcu lorem.</p>
