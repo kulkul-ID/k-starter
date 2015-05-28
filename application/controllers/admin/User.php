@@ -21,7 +21,7 @@ class User extends Admin_Controller
 			asset_url('plugins/datatables/dataTables.bootstrap.js'),
 			asset_url('plugins/slimScroll/jquery.slimscroll.min.js')
 		));
-
+        
 		$data['users'] = $this->user_model->get_all();
 		$data['tagline'] = 'Manage all users';
 
