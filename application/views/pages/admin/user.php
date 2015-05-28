@@ -13,6 +13,16 @@
 					</div>
                 </div>
                 <div class="box-body">
+                    <?php if(isset($success)): ?>
+                    <div class="alert alert-success">
+                        <?php echo $success; ?>
+                    </div>
+                    <?php endif; ?>
+                    <?php if(isset($error)): ?>
+                    <div class="alert alert-success">
+                        <?php echo $error; ?>
+                    </div>
+                    <?php endif; ?>
                     <table class="table data-table">
                     	<thead>
                     		<tr>
@@ -32,9 +42,8 @@
                     			<td><?php echo ($user->active == 1) ? 'Active' : 'Inactive' ; ?></td>
                     			<td>
                     				<a href="<?php echo admin_url('user/form/'.$user->id); ?>" class="btn btn-xs btn-info">Edit</a>
-                    				<a href="" class="btn btn-xs btn-warning">Deactivate</a>
-                    				<a href="" class="btn btn-xs btn-danger">Reset Password</a>
-                    				<a href="" class="btn btn-xs btn-success">Send Email</a>
+                    				<a href="<?php echo admin_url('user/deactivate/'.$user->id); ?>" class="btn btn-xs btn-warning">Deactivate</a>
+                    				<a href="<?php echo admin_url('user/send-email/'.$user->id); ?>" class="btn btn-xs btn-success">Send Email</a>
                     			</td>
                     		</tr>
                     	<?php endforeach; ?>

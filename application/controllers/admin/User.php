@@ -26,6 +26,7 @@ class User extends Admin_Controller
 		$data['tagline'] = 'Manage all users';
 
 		$this->stencil->title('User Management');
+        $this->stencil->data($this->session->flashdata());
 		$this->stencil->data($data);
 
 		$this->stencil->paint('admin/user');
@@ -85,4 +86,57 @@ class User extends Admin_Controller
 			}
 		}
 	}
+    
+    public function deactivate($id)
+    {
+        $values = array(
+			'active' 	=> 0,
+		);
+        $this->user_model->update($this->input->post('id'), $values);
+		$this->session->set_flashdata('success', 'User has been deactivated.');
+        redirect('admin/user');
+    }
+    
+    public function send_email($id)
+    {
+        $data = array();
+        $this->stencil->title('Send email');
+        
+		if($id != NULL)
+		{
+			$data['user'] = $this->user_model->get($id);
+		}
+        
+        $this->stencil->data($data);
+        
+        if($this->input->method() != 'post')
+        {
+            $this->stencil->js(asset_url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'));
+            $this->stencil->css(asset_url('plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'));
+            $this->stencil->paint('admin/user-send-email');
+        }else{
+            $user = $this->kulkul_auth->user();
+            
+            $this->load->library('email');
+
+            $config['charset'] = 'iso-8859-1';
+            $config['wordwrap'] = TRUE;
+            $config['mailtype'] = 'html';
+            
+            $this->email->initialize($config);
+            
+            $this->email->from($user->email, $user->full_name);
+            $this->email->to($this->input->post('to'));
+            $this->email->cc($this->input->post('cc'));
+            $this->email->bcc($this->input->post('bcc'));
+            
+            $this->email->subject($this->input->post('subject'));
+            $this->email->message($this->input->post('body'));
+            
+            $this->email->send();
+            
+            $this->session->set_flashdata('success', 'Your email has been sent');
+            redirect('admin/user');
+        }
+    }
 }
