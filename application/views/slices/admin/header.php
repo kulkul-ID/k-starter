@@ -1,5 +1,5 @@
 <header class="main-header">
-<a href="<?php echo site_url('admin'); ?>" class="logo">K-Starter</a>
+<a href="<?php echo site_url('admin'); ?>" class="logo"><?php echo config('site', 'name'); ?></a>
 <!-- Header Navbar: style can be found in header.less -->
 <nav class="navbar navbar-static-top" role="navigation">
   <!-- Sidebar toggle button-->

@@ -247,7 +247,7 @@ class CI_Config {
 		}
 
 		$uri = $this->_uri_string($uri);
-
+        
 		if ($this->item('enable_query_strings') === FALSE)
 		{
 			$suffix = isset($this->config['url_suffix']) ? $this->config['url_suffix'] : '';
@@ -263,7 +263,7 @@ class CI_Config {
 					$uri .= $suffix;
 				}
 			}
-
+            
 			return $base_url.$this->slash_item('index_page').$uri;
 		}
 		elseif (strpos($uri, '?') === FALSE)

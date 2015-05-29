@@ -96,7 +96,8 @@ $autoload['drivers'] = array();
 $autoload['helper'] = array(
     'stencil',
     'url',
-    'form'
+    'form',
+    'config'
 );
 
 
